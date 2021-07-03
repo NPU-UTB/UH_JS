@@ -116,6 +116,11 @@ Alter table Keywords drop constraint FK_KW_Faction;
 Alter table UnitsKeywords drop constraint FK_UK_Unit;
 Alter table UnitsKeywords drop constraint FK_UK_KW;
 
+Delete from Factions;
+Delete from Units;
+Delete from Keywords;
+Delete from UnitsKeywords;
+
 Drop table Factions;
 Drop table Units;
 Drop table Keywords;

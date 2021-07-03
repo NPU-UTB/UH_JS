@@ -1,5 +1,6 @@
 namespace UnitHelperServer.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -23,9 +24,9 @@ namespace UnitHelperServer.Models
         public int FactionId { get; set; }
 
         public bool Approved { get; set; }
-
+        [JsonIgnore]
         public virtual Faction Faction { get; set; }
-
+        [JsonIgnore]
         public virtual List<UnitsKeyword> UnitsKeywords { get; set; }
     }
 }

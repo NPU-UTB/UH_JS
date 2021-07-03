@@ -28,11 +28,6 @@ namespace UnitHelperServer.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Faction>()
-                .HasMany(e => e.Keywords)
-                .WithRequired(e => e.Faction)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Faction>()
                 .HasMany(e => e.Units)
                 .WithRequired(e => e.Faction)
                 .WillCascadeOnDelete(false);

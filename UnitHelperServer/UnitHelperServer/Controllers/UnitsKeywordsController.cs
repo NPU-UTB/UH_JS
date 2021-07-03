@@ -13,49 +13,49 @@ using UnitHelperServer.Models;
 
 namespace UnitHelperServer.Controllers
 {
-    public class KeywordsController : ApiController
+    public class UnitsKeywordsController : ApiController
     {
         private UnitHelperContext db;
 
-        public KeywordsController(UnitHelperContext _db)
+        public UnitsKeywordsController(UnitHelperContext _db)
         {
             db = _db;
         }
 
-        // GET: api/Keywords
-        public IQueryable<Keyword> GetKeywords()
+        // GET: api/UnitsKeywords
+        public IQueryable<UnitsKeyword> GetUnitsKeywords()
         {
-            return db.Keywords;
+            return db.UnitsKeywords;
         }
 
-        // GET: api/Keywords/5
-        [ResponseType(typeof(Keyword))]
-        public async Task<IHttpActionResult> GetKeyword(int id)
+        // GET: api/UnitsKeywords/5
+        [ResponseType(typeof(UnitsKeyword))]
+        public async Task<IHttpActionResult> GetUnitsKeyword(int id)
         {
-            Keyword keyword = await db.Keywords.FindAsync(id);
-            if (keyword == null)
+            UnitsKeyword unitsKeyword = await db.UnitsKeywords.FindAsync(id);
+            if (unitsKeyword == null)
             {
                 return NotFound();
             }
 
-            return Ok(keyword);
+            return Ok(unitsKeyword);
         }
 
-        // PUT: api/Keywords/5
+        // PUT: api/UnitsKeywords/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutKeyword(int id, Keyword keyword)
+        public async Task<IHttpActionResult> PutUnitsKeyword(int id, UnitsKeyword unitsKeyword)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != keyword.Id)
+            if (id != unitsKeyword.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(keyword).State = EntityState.Modified;
+            db.Entry(unitsKeyword).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +63,7 @@ namespace UnitHelperServer.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!KeywordExists(id))
+                if (!UnitsKeywordExists(id))
                 {
                     return NotFound();
                 }
@@ -76,16 +76,16 @@ namespace UnitHelperServer.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Keywords
-        [ResponseType(typeof(Keyword))]
-        public async Task<IHttpActionResult> PostKeyword(Keyword keyword)
+        // POST: api/UnitsKeywords
+        [ResponseType(typeof(UnitsKeyword))]
+        public async Task<IHttpActionResult> PostUnitsKeyword(UnitsKeyword unitsKeyword)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Keywords.Add(keyword);
+            db.UnitsKeywords.Add(unitsKeyword);
 
             try
             {
@@ -93,7 +93,7 @@ namespace UnitHelperServer.Controllers
             }
             catch (DbUpdateException)
             {
-                if (KeywordExists(keyword.Id))
+                if (UnitsKeywordExists(unitsKeyword.Id))
                 {
                     return Conflict();
                 }
@@ -103,23 +103,23 @@ namespace UnitHelperServer.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = keyword.Id }, keyword);
+            return CreatedAtRoute("DefaultApi", new { id = unitsKeyword.Id }, unitsKeyword);
         }
 
-        // DELETE: api/Keywords/5
-        [ResponseType(typeof(Keyword))]
-        public async Task<IHttpActionResult> DeleteKeyword(int id)
+        // DELETE: api/UnitsKeywords/5
+        [ResponseType(typeof(UnitsKeyword))]
+        public async Task<IHttpActionResult> DeleteUnitsKeyword(int id)
         {
-            Keyword keyword = await db.Keywords.FindAsync(id);
-            if (keyword == null)
+            UnitsKeyword unitsKeyword = await db.UnitsKeywords.FindAsync(id);
+            if (unitsKeyword == null)
             {
                 return NotFound();
             }
 
-            db.Keywords.Remove(keyword);
+            db.UnitsKeywords.Remove(unitsKeyword);
             await db.SaveChangesAsync();
 
-            return Ok(keyword);
+            return Ok(unitsKeyword);
         }
 
         protected override void Dispose(bool disposing)
@@ -131,9 +131,9 @@ namespace UnitHelperServer.Controllers
             base.Dispose(disposing);
         }
 
-        private bool KeywordExists(int id)
+        private bool UnitsKeywordExists(int id)
         {
-            return db.Keywords.Count(e => e.Id == id) > 0;
+            return db.UnitsKeywords.Count(e => e.Id == id) > 0;
         }
     }
 }
