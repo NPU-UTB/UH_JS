@@ -1,0 +1,41 @@
+<div>
+    <h1>Faction: {{faction.Name}}</h1>
+    <div>
+        <h3>Units</h3>
+        <ul *ngFor="let u of units">
+            <li *ngIf="u.FactionId == faction.Id" (click)="onSelect(u)">
+                {{u.Name}}
+            </li>
+        </ul>
+        
+        <button *ngIf="!editMode" (click)="editOn()">Add new unit</button>
+        <div *ngIf="editMode">
+            <h4>New unit:</h4>
+            <label for="uname">Name:</label>
+            <input #unitname type="text" id="uname" />
+            <button (click)="addUnit(unitname.value)">Ok</button>
+            <button (click)="editOff()">Cancel</button>
+        </div>
+    </div>
+    <div *ngIf="selectedUnit">
+        <h3>Details:</h3>
+        <p>Name: {{selectedUnit.Name}}</p>
+        <p>DBID: {{selectedUnit.Id}}</p>
+        <p *ngIf="selectedUnit.FactionId == faction.Id">Faction: {{faction.Name}}</p>
+        <button *ngIf="!selectedUnit.Approved" (click)="doApprove(selectedUnit)">Approve</button>
+        <p>Keywords:</p>
+        <ul *ngFor="let uk of uks">
+            <li *ngIf="uk.UnitId == selectedUnit.Id">
+                {{keywords[uk.KeywordId-1].Text}}
+            </li>
+        </ul>
+    </div>
+    <!--
+    <h3>Keywords</h3>
+    <ul *ngFor="let k of keywords">
+        <li *ngIf="k.FactionId == 0 || k.FactionId == faction.Id">
+            {{k.Text}}
+        </li>
+    </ul>
+    -->
+</div>

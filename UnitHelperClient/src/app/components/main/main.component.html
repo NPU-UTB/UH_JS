@@ -7,30 +7,33 @@
         <h3>Choose your faction:</h3>
         <div class="col">
             <h4>Imperium</h4>
-            <ul>
-                <li>Adeptus Astartes</li>
-                <li>TBD</li>
+            <ul *ngFor="let f of factions" >
+                <li *ngIf="f.Metagroup == 'Imperium'" (click)="onSelect(f)">
+                    <span>{{f.Name}}</span>
+                </li>
             </ul>
         </div>
         <div class="col">
             <h4>Xenos</h4>
-            <ul>
-                <li>Necrons</li>
-                <li>TBD</li>
+            <ul *ngFor="let f of factions">
+                <li *ngIf="f.Metagroup == 'Xenos'" (click)="onSelect(f)">
+                    <span>{{f.Name}}</span>
+                </li>
             </ul>
         </div>
         <div class="col">
             <h4>Chaos</h4>
-            <ul>
-                <li>Death Guard</li>
-                <li>TBD</li>
+            <ul *ngFor="let f of factions">
+                <li *ngIf="f.Metagroup == 'Chaos'" (click)="onSelect(f)">
+                    <span>{{f.Name}}</span>
+                </li>
             </ul>
         </div>
     </div>
-    <div class="row">
-        <p>--chosen faction--</p>
+    <div class="row" *ngIf="selected">
+        <p>{{selected.Id}} : {{selected.Name}}</p>
         <br/>
         <button class="btn btn-success">Edit?</button>
-        <button class="btn btn-success">Browse</button>
+        <button class="btn btn-success" *ngIf="selected.Approved == true" routerLink="../browser">Browse</button>
     </div>
 </div>

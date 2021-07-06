@@ -50,7 +50,7 @@ Insert into Keywords values (4, 'Fly', 0, 1);
 Insert into Keywords values (5, 'Swarm', 0, 1);
 Insert into Keywords values (6, 'Scout', 1, 1);
 Insert into Keywords values (7, 'Smokescreen', 1, 1);
-Insert into Keywords values (8, 'Melta Bombs', 0, 1);
+Insert into Keywords values (8, 'Melta Bombs', 1, 1);
 Insert into Keywords values (9, 'Canoptek', 2, 1);
 Insert into Keywords values (10, 'Bubonic Astartes', 3, 0);
 Insert into Keywords values (11, 'Gauss', 2, 1);
@@ -95,11 +95,11 @@ Insert into UnitsKeywords values (23, 8, 4);
 Insert into UnitsKeywords values (24, 8, 5);
 Insert into UnitsKeywords values (25, 8, 9);
 
-Insert into UnitsKeywords values (1, 9, 2);
+Insert into UnitsKeywords values (26, 9, 2);
 
-Insert into UnitsKeywords values (1, 10, 1);
-Insert into UnitsKeywords values (1, 10, 2);
-Insert into UnitsKeywords values (1, 10, 10);
+Insert into UnitsKeywords values (27, 10, 1);
+Insert into UnitsKeywords values (28, 10, 2);
+Insert into UnitsKeywords values (29, 10, 10);
 
 --Foreign Keys
 Alter table Units add constraint FK_Unit_Faction Foreign Key(FactionId) references Factions(Id);

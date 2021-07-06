@@ -23,6 +23,7 @@ namespace UnitHelperServer.Controllers
         }
 
         // GET: api/Factions
+        [HttpGet]
         public IQueryable<Faction> GetFactions()
         {
             return db.Factions;
@@ -30,6 +31,7 @@ namespace UnitHelperServer.Controllers
 
         // GET: api/Factions/5
         [ResponseType(typeof(Faction))]
+        [HttpGet]
         public async Task<IHttpActionResult> GetFaction(int id)
         {
             Faction faction = await db.Factions.FindAsync(id);
