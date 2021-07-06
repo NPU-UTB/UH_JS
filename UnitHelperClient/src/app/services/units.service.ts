@@ -10,6 +10,72 @@ export class UnitsService {
 
   constructor(private http : HttpClient) { }
 
+  getPre()
+  {
+    return [
+      {
+        Id : 1,
+        Name : "Tactical Squad",
+        FactionId : 1,
+        Approved : true
+      },
+      {
+       Id : 2,
+       Name : "Assault Squad",
+       FactionId : 1,
+       Approved : true
+     },
+     {
+       Id : 3,
+       Name : "Devastator Squad",
+       FactionId : 1,
+       Approved : true
+     },
+     {
+       Id : 4,
+       Name : "Scout Squad",
+       FactionId : 1,
+       Approved : true
+     },
+     {
+       Id : 5,
+       Name : "Necron Warriors",
+       FactionId : 2,
+       Approved : true
+     },
+     {
+       Id : 6,
+       Name : "Immortals",
+       FactionId : 2,
+       Approved : true
+     },
+     {
+       Id : 7,
+       Name : "Tomb Blades",
+       FactionId : 2,
+       Approved : true
+     },
+     {
+       Id : 8,
+       Name : "Canoptek Scarab Swarm",
+       FactionId : 2,
+       Approved : true
+     },
+     {
+       Id : 9,
+       Name : "Poxwalkers",
+       FactionId : 3,
+       Approved : false
+     },
+     {
+       Id : 10,
+       Name : "Plague Marines",
+       FactionId : 3,
+       Approved : false
+     }
+    ];
+  }
+
   getAll()
   {
     return this.http.get(baseUrl);

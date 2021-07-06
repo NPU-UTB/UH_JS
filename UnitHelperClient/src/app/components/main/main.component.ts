@@ -17,32 +17,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   constructor(private factionsService: FactionsService, private shared : SharedService) {
     /* */
-    this.factions = [
-      {
-        Id : 0,
-        Name : "Any",
-        Metagroup : "",
-        Approved : true
-      },
-      {
-        Id : 1,
-        Name : "Adeptus Astartes",
-        Metagroup : "Imperium",
-        Approved : true
-      },
-      {
-        Id : 2,
-        Name : "Necrons",
-        Metagroup : "Xenos",
-        Approved : true
-      },
-      {
-        Id : 3,
-        Name : "Death Guard",
-        Metagroup : "Chaos",
-        Approved : false
-      }
-    ];
+    this.factions = this.factionsService.getPre();
    }
 
   ngOnInit(): void {

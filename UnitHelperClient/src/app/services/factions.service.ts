@@ -10,6 +10,36 @@ export class FactionsService {
 
   constructor(private http: HttpClient) { }
 
+  getPre()
+  {
+    return [
+      {
+        Id : 0,
+        Name : "Any",
+        Metagroup : "",
+        Approved : true
+      },
+      {
+        Id : 1,
+        Name : "Adeptus Astartes",
+        Metagroup : "Imperium",
+        Approved : true
+      },
+      {
+        Id : 2,
+        Name : "Necrons",
+        Metagroup : "Xenos",
+        Approved : true
+      },
+      {
+        Id : 3,
+        Name : "Death Guard",
+        Metagroup : "Chaos",
+        Approved : false
+      }
+    ];
+  }
+
   getAll()
   {
     return this.http.get(baseUrl);

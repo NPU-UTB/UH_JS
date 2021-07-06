@@ -11,9 +11,20 @@
         <button *ngIf="!editMode" (click)="editOn()">Add new unit</button>
         <div *ngIf="editMode">
             <h4>New unit:</h4>
-            <label for="uname">Name:</label>
-            <input #unitname type="text" id="uname" />
-            <button (click)="addUnit(unitname.value)">Ok</button>
+            <form [formGroup]="form" (ngSubmit)="addUnit(unitname.value)" novalidate>
+                <label for="uname">Name:</label>
+                <input #unitname type="text" id="uname" />
+                <div *ngFor="let k of keywords">
+                    <label *ngIf="k.FactionId == 0 || k.FactionId == faction.Id">
+                        <input type="checkbox" [value]="k.Id" (change)="onCheckboxChange($event)" />
+                        {{k.Text}}
+                    </label>
+                </div>
+                <input type="submit" value="Add"/>
+            </form>
+            <!--
+                <button (click)="addUnit(unitname.value)">Ok</button>
+            -->
             <button (click)="editOff()">Cancel</button>
         </div>
     </div>
