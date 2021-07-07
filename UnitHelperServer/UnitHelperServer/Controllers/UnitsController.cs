@@ -25,6 +25,7 @@ namespace UnitHelperServer.Controllers
         }
 
         // GET: api/Units
+        [HttpGet]
         public IQueryable<Unit> GetUnits()
         {
             return db.Units;
@@ -32,6 +33,7 @@ namespace UnitHelperServer.Controllers
 
         // GET: api/Units/5
         [ResponseType(typeof(Unit))]
+        [HttpGet]
         public async Task<IHttpActionResult> GetUnit(int id)
         {
             Unit unit = await db.Units.FindAsync(id);
@@ -45,6 +47,7 @@ namespace UnitHelperServer.Controllers
 
         // PUT: api/Units/5
         [ResponseType(typeof(void))]
+        [HttpPut]
         public async Task<IHttpActionResult> PutUnit(int id, Unit unit)
         {
             if (!ModelState.IsValid)
@@ -80,6 +83,7 @@ namespace UnitHelperServer.Controllers
 
         // POST: api/Units
         [ResponseType(typeof(Unit))]
+        [HttpPost]
         public async Task<IHttpActionResult> PostUnit(Unit unit)
         {
             if (!ModelState.IsValid)
@@ -110,6 +114,7 @@ namespace UnitHelperServer.Controllers
 
         // DELETE: api/Units/5
         [ResponseType(typeof(Unit))]
+        [HttpDelete]
         public async Task<IHttpActionResult> DeleteUnit(int id)
         {
             Unit unit = await db.Units.FindAsync(id);

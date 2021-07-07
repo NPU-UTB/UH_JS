@@ -8,11 +8,13 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using UnitHelperServer.Models;
 
 namespace UnitHelperServer.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UnitsKeywordsController : ApiController
     {
         private UnitHelperContext db;
@@ -23,6 +25,7 @@ namespace UnitHelperServer.Controllers
         }
 
         // GET: api/UnitsKeywords
+        [HttpGet]
         public IQueryable<UnitsKeyword> GetUnitsKeywords()
         {
             return db.UnitsKeywords;
@@ -30,6 +33,7 @@ namespace UnitHelperServer.Controllers
 
         // GET: api/UnitsKeywords/5
         [ResponseType(typeof(UnitsKeyword))]
+        [HttpGet]
         public async Task<IHttpActionResult> GetUnitsKeyword(int id)
         {
             UnitsKeyword unitsKeyword = await db.UnitsKeywords.FindAsync(id);
@@ -43,6 +47,7 @@ namespace UnitHelperServer.Controllers
 
         // PUT: api/UnitsKeywords/5
         [ResponseType(typeof(void))]
+        [HttpPut]
         public async Task<IHttpActionResult> PutUnitsKeyword(int id, UnitsKeyword unitsKeyword)
         {
             if (!ModelState.IsValid)
@@ -78,6 +83,7 @@ namespace UnitHelperServer.Controllers
 
         // POST: api/UnitsKeywords
         [ResponseType(typeof(UnitsKeyword))]
+        [HttpPost]
         public async Task<IHttpActionResult> PostUnitsKeyword(UnitsKeyword unitsKeyword)
         {
             if (!ModelState.IsValid)
@@ -108,6 +114,7 @@ namespace UnitHelperServer.Controllers
 
         // DELETE: api/UnitsKeywords/5
         [ResponseType(typeof(UnitsKeyword))]
+        [HttpDelete]
         public async Task<IHttpActionResult> DeleteUnitsKeyword(int id)
         {
             UnitsKeyword unitsKeyword = await db.UnitsKeywords.FindAsync(id);

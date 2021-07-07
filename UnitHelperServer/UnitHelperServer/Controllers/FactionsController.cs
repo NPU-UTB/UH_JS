@@ -8,11 +8,13 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using UnitHelperServer.Models;
 
 namespace UnitHelperServer.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class FactionsController : ApiController
     {
         private UnitHelperContext db;
@@ -45,6 +47,7 @@ namespace UnitHelperServer.Controllers
 
         // PUT: api/Factions/5
         [ResponseType(typeof(void))]
+        [HttpPut]
         public async Task<IHttpActionResult> PutFaction(int id, Faction faction)
         {
             if (!ModelState.IsValid)
@@ -80,6 +83,7 @@ namespace UnitHelperServer.Controllers
 
         // POST: api/Factions
         [ResponseType(typeof(Faction))]
+        [HttpPost]
         public async Task<IHttpActionResult> PostFaction(Faction faction)
         {
             if (!ModelState.IsValid)
@@ -110,6 +114,7 @@ namespace UnitHelperServer.Controllers
 
         // DELETE: api/Factions/5
         [ResponseType(typeof(Faction))]
+        [HttpDelete]
         public async Task<IHttpActionResult> DeleteFaction(int id)
         {
             Faction faction = await db.Factions.FindAsync(id);

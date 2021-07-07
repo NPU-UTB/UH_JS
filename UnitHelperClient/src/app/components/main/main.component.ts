@@ -15,19 +15,20 @@ export class MainComponent implements OnInit, OnDestroy {
   selected? : Faction;
   subscription : Subscription;
 
-  constructor(private factionsService: FactionsService, private shared : SharedService) {
+  constructor(private factionsService: FactionsService, 
+    private shared : SharedService) {
     /* */
-    this.factions = this.factionsService.getPre();
+    //this.factions = this.factionsService.getPre();
    }
 
   ngOnInit(): void {
     this.subscription = this.shared.currentData.subscribe(faction => this.selected = faction);
-    /*
+    /**/
     this.factionsService.getAll().subscribe((result) => {
       this.factions = result as Faction[];
     },
     (error) => { console.error(error);});
-    */
+    
   }
 
   ngOnDestroy(): void {

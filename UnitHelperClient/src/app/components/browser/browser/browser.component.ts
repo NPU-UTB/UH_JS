@@ -36,9 +36,11 @@ export class BrowserComponent implements OnInit, OnDestroy {
      private shared : SharedService,
      private fb : FormBuilder)
      {
+       /*
        this.units = this.unitsService.getPre();
        this.keywords = this.keyService.getPre();
        this.uks = this.ukeyService.getPre();
+       */
 
        this.form = this.fb.group({
          checkArray: this.fb.array([])
@@ -46,7 +48,24 @@ export class BrowserComponent implements OnInit, OnDestroy {
      }
 
   ngOnInit(): void {
-    this.subscription = this.shared.currentData.subscribe(faction => this.faction = faction);
+    //get Units
+    this.unitsService.getAll().subscribe((result) => {
+      this.units = result as Unit[];
+    },
+    (error) => { console.error(error);});
+    //get Keywords
+    this.keyService.getAll().subscribe((result) => {
+      this.keywords = result as Keyword[];
+    },
+    (error) => { console.error(error);});
+    //get Units_Keywords
+    this.ukeyService.getAll().subscribe((result) => {
+      this.uks = result as UnitsKeyword[];
+    },
+    (error) => { console.error(error);});
+
+    this.subscription = this.shared.currentData.subscribe(faction => 
+      this.faction = faction);
     this.editMode = false;
   }
 
@@ -62,6 +81,7 @@ export class BrowserComponent implements OnInit, OnDestroy {
   doApprove(unit : Unit)
   {
     unit.Approved = true;
+    this.unitsService.update(unit.Id, unit);
   }
 
   editOn()
@@ -83,6 +103,7 @@ export class BrowserComponent implements OnInit, OnDestroy {
     };
     this.units.push(unit);
     //+ aktualizacja bazy
+    this.unitsService.create(unit);
 
     let checkArray : FormArray = this.form.get('checkArray') as FormArray;
     checkArray.controls.forEach((item: FormControl) => {
@@ -94,9 +115,11 @@ export class BrowserComponent implements OnInit, OnDestroy {
         KeywordId : value
       };
       this.uks.push(uk);
-    });
+      //+ aktualizacja bazy
+      this.ukeyService.create(uk);
+    }); 
     
-    //+ aktualizacja bazy
+
     this.editOff();
   }
 

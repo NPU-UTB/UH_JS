@@ -124,4 +124,3 @@ E:\SysLib\Documents\GitHub\UH_JS\UnitHelperServer\UnitHelperServer\bin\System.Th
 E:\SysLib\Documents\GitHub\UH_JS\UnitHelperServer\UnitHelperServer\bin\System.Web.Http.Cors.xml
 E:\SysLib\Documents\GitHub\UH_JS\UnitHelperServer\UnitHelperServer\obj\Debug\UnitHelperServer.Migrations.initial.resources
 E:\SysLib\Documents\GitHub\UH_JS\UnitHelperServer\UnitHelperServer\obj\Debug\UnitHelperServer.csproj.GenerateResource.cache
-E:\SysLib\Documents\GitHub\UH_JS\UnitHelperServer\UnitHelperServer\obj\Debug\UnitHelperServer.csprojAssemblyReference.cache
