@@ -1,4 +1,4 @@
-<div>
+
     <div class="row">
         <h1>WH40k Stratagem Manager</h1>
         <h2>Unit helper</h2>
@@ -6,7 +6,9 @@
     <div class="row">
         <h3>Choose your faction:</h3>
         <div class="col">
+            <div class="card highlight-card card-small"> 
             <h4>Imperium</h4>
+            </div>
             <ul *ngFor="let f of factions" >
                 <li *ngIf="f.Metagroup == 'Imperium'" (click)="onSelect(f)">
                     <span>{{f.Name}}</span>
@@ -14,15 +16,24 @@
             </ul>
         </div>
         <div class="col">
+            <div class="card highlight-card card-small"> 
             <h4>Xenos</h4>
+            </div>
+
+            <section>
+            
             <ul *ngFor="let f of factions">
                 <li *ngIf="f.Metagroup == 'Xenos'" (click)="onSelect(f)">
-                    <span>{{f.Name}}</span>
+                       <div class="example-button-row">{{f.Name}}</div>
                 </li>
             </ul>
+            
+        </section>
         </div>
         <div class="col">
+            <div class="card highlight-card card-small"> 
             <h4>Chaos</h4>
+            </div>
             <ul *ngFor="let f of factions">
                 <li *ngIf="f.Metagroup == 'Chaos'" (click)="onSelect(f)">
                     <span>{{f.Name}}</span>
@@ -36,4 +47,4 @@
         <button class="btn btn-success">Edit?</button>
         <button class="btn btn-success" *ngIf="selected.Approved == true" routerLink="../browser">Browse</button>
     </div>
-</div>
+

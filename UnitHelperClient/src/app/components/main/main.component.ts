@@ -41,3 +41,4 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
 }
+export class ButtonOverviewExample {}
