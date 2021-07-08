@@ -81,7 +81,10 @@ export class BrowserComponent implements OnInit, OnDestroy {
   doApprove(unit : Unit)
   {
     unit.Approved = true;
-    this.unitsService.update(unit.Id, unit);
+    this.unitsService.update(unit.Id, unit).subscribe(response => {
+      console.log(response);
+    },
+    error => console.log(error));;;
   }
 
   editOn()
@@ -133,12 +136,12 @@ export class BrowserComponent implements OnInit, OnDestroy {
     //usuwanie z bazy
     this.uks.forEach(uk => {
       if(uk.UnitId == unit.Id) 
-      this.ukeyService.delete(uk.Id).subscribe(response => {
-        console.log(response);
-      },
-      error => console.log(error));;
-      //tablica?
-      //delete this.uks[this.uks.indexOf(uk)];
+      {
+        this.ukeyService.delete(uk.Id).subscribe(response => {
+          console.log(response);
+        },
+        error => console.log(error));
+      }
     });
     this.unitsService.delete(unit.Id).subscribe(response => {
       console.log(response);
@@ -148,6 +151,14 @@ export class BrowserComponent implements OnInit, OnDestroy {
 
     //usuń z tablicy... albo zaktualizuj tablicę?
     //delete this.units[this.units.indexOf(unit)];
+    this.uks.forEach(uk => {
+      if(uk.UnitId == unit.Id) {
+        var i = this.uks.indexOf(uk);
+        if (i > -1) this.uks.splice(i, 1);
+      }
+    });
+    var i = this.units.indexOf(unit);
+    if (i > -1) this.units.splice(i, 1);
   }
 
 
