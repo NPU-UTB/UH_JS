@@ -103,7 +103,10 @@ export class BrowserComponent implements OnInit, OnDestroy {
     };
     this.units.push(unit);
     //+ aktualizacja bazy
-    this.unitsService.create(unit);
+    this.unitsService.create(unit).subscribe(response => {
+      console.log(response);
+    },
+    error => console.log(error));
 
     let checkArray : FormArray = this.form.get('checkArray') as FormArray;
     checkArray.controls.forEach((item: FormControl) => {
@@ -116,11 +119,35 @@ export class BrowserComponent implements OnInit, OnDestroy {
       };
       this.uks.push(uk);
       //+ aktualizacja bazy
-      this.ukeyService.create(uk);
-    }); 
+      this.ukeyService.create(uk).subscribe(response => {
+        console.log(response);
+      },
+      error => console.log(error));;
+    });
     
-
     this.editOff();
+  }
+
+  doDelete(unit: Unit)
+  {
+    //usuwanie z bazy
+    this.uks.forEach(uk => {
+      if(uk.UnitId == unit.Id) 
+      this.ukeyService.delete(uk.Id).subscribe(response => {
+        console.log(response);
+      },
+      error => console.log(error));;
+      //tablica?
+      //delete this.uks[this.uks.indexOf(uk)];
+    });
+    this.unitsService.delete(unit.Id).subscribe(response => {
+      console.log(response);
+    },
+    error => console.log(error));
+    this.selectedUnit = null;
+
+    //usuń z tablicy... albo zaktualizuj tablicę?
+    //delete this.units[this.units.indexOf(unit)];
   }
 
 
@@ -143,11 +170,5 @@ export class BrowserComponent implements OnInit, OnDestroy {
         i++;
       });
     }
-  }
-
-  submitForm()
-  {
-    //zamiast tego addUnit()?
-    //a moze coś jeszcze?
   }
 }

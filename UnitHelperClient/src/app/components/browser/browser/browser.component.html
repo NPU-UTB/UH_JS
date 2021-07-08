@@ -33,7 +33,10 @@
         <p>Name: {{selectedUnit.Name}}</p>
         <p>DBID: {{selectedUnit.Id}}</p>
         <p *ngIf="selectedUnit.FactionId == faction.Id">Faction: {{faction.Name}}</p>
-        <button *ngIf="!selectedUnit.Approved" (click)="doApprove(selectedUnit)">Approve</button>
+        <div *ngIf="!selectedUnit.Approved">
+            <button  (click)="doApprove(selectedUnit)">Approve</button>
+            <button  (click)="doDelete(selectedUnit)">Delete</button>
+        </div>
         <p>Keywords:</p>
         <ul *ngFor="let uk of uks">
             <li *ngIf="uk.UnitId == selectedUnit.Id">
