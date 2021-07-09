@@ -11,7 +11,8 @@
 
   .row{
       text-align: center;
-      background-color: #807d7d;
+      background-color: rgba(128,125,125,0.6);
+      
   }
   
   
@@ -45,4 +46,8 @@ list-style-type:none;
 
 button:active{
     background-color: yellow;
+}
+
+h1,h2,h3{
+    color: rgb(207, 224, 248);
 }
