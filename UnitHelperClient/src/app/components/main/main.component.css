@@ -21,7 +21,7 @@
   .example-button-row {
     color: white;
     border-radius: 4px;
-    border: 1px solid rgb(165, 4, 4);
+    border: 1px solid rgb(207, 224, 248);;
     background-color: #3a4947;
     height: 40px;
     width: 200px;
@@ -34,8 +34,10 @@
     transition: all 0.2s ease-in-out;
     line-height: 24px;
 }
-  .example-button-row:active {
-  color: yellow;
+  .example-button-row:active,.btn:active {
+  color: rgb(126, 180, 255);
+  background-color: #5e7270;
+  border: 1px solid rgb(34, 123, 248);;
   }
   
 
@@ -43,11 +45,17 @@ li{
 list-style-type:none;
 }
 
-
-button:active{
-    background-color: yellow;
+.example-button-row:hover,.btn:hover{
+    background-color: #66706f;
 }
+
 
 h1,h2,h3{
     color: rgb(207, 224, 248);
+}
+.btn{
+background-color: #3a4947;
+border-radius: 4px;
+border: 1px solid #3a4947;
+
 }

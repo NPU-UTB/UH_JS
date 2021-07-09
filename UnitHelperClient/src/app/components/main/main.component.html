@@ -20,7 +20,7 @@
             </div>
             <ul *ngFor="let f of factions" >
                 <li *ngIf="f.Metagroup == 'Imperium'" (click)="onSelect(f)">
-                    <span>{{f.Name}}</span>
+                    <div class="example-button-row"><span>{{f.Name}}</span></div>
                 </li>
             </ul>
         </div>
@@ -28,13 +28,23 @@
             <div class="card highlight-card card-small"> 
             <h4>Xenos</h4>
             </div>
-
+            <br>
+                    
+            <ul>
+                <li>
+                    <div class="example-button-row">Testowy przycisk</div>
+                </li>
+            </ul> 
+        
+       
             <section>
             
             <ul *ngFor="let f of factions">
+               
                 <li *ngIf="f.Metagroup == 'Xenos'" (click)="onSelect(f)">
                        <div class="example-button-row">{{f.Name}}</div>
                 </li>
+
             </ul>
             
         </section>
@@ -45,11 +55,18 @@
             </div>
             <ul *ngFor="let f of factions">
                 <li *ngIf="f.Metagroup == 'Chaos'" (click)="onSelect(f)">
-                    <span>{{f.Name}}</span>
+                    <div class="example-button-row"><span>{{f.Name}}</span></div>
                 </li>
             </ul>
         </div>
     </div>
+
+
+    <div class="row">
+    <button class="btn btn-success">Testowy</button>
+    </div>
+
+
     <div class="row" *ngIf="selected">
         <p>{{selected.Id}} : {{selected.Name}}</p>
         <br/>
