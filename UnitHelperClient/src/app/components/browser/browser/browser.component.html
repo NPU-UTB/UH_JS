@@ -1,34 +1,46 @@
-<div>
+<div class="row">
     <h1>Faction: {{faction.Name}}</h1>
-    <div>
+    <div class="units">
         <h3>Units</h3>
+        <hr>
         <ul *ngFor="let u of units">
             <li *ngIf="u.FactionId == faction.Id" (click)="onSelect(u)">
-                {{u.Name}}
+                <div class="example-button-row">  {{u.Name}} </div>
             </li>
         </ul>
-        
-        <button *ngIf="!editMode" (click)="editOn()">Add new unit</button>
-        <div *ngIf="editMode">
-            <h4>New unit:</h4>
+    </div>
+    
+        <button class="btn btn-success" *ngIf="!editMode" (click)="editOn()">Add new unit</button>
+    </div>
+        <div *ngIf="editMode" class="newUnit">
+            <h3>New unit:</h3>
+            <div class="containerName">
             <form [formGroup]="form" (ngSubmit)="addUnit(unitname.value)" novalidate>
-                <label for="uname">Name:</label>
+                <label for="uname">Name:  </label> &nbsp; 
                 <input #unitname type="text" id="uname" />
                 <div *ngFor="let k of keywords">
-                    <label *ngIf="k.FactionId == 0 || k.FactionId == faction.Id">
-                        <input type="checkbox" [value]="k.Id" (change)="onCheckboxChange($event)" />
+                    <label class="container" *ngIf="k.FactionId == 0 || k.FactionId == faction.Id">
+                        <input  type="checkbox" [value]="k.Id" (change)="onCheckboxChange($event)" />
                         {{k.Text}}
                     </label>
                 </div>
-                <input type="submit" value="Add"/>
+                
+                
+                <input class="btn" type="submit" value="Add"/>&nbsp;
+                <button class="btn" (click)="editOff()">Cancel</button>
             </form>
+            
+        </div>
+        <br>
+        <br>
             <!--
                 <button (click)="addUnit(unitname.value)">Ok</button>
             -->
-            <button (click)="editOff()">Cancel</button>
+            
         </div>
-    </div>
+        <div class="row">  
     <div *ngIf="selectedUnit">
+        <hr>
         <h3>Details:</h3>
         <p>Name: {{selectedUnit.Name}}</p>
         <p>DBID: {{selectedUnit.Id}}</p>
@@ -37,12 +49,16 @@
             <button  (click)="doApprove(selectedUnit)">Approve</button>
             <button  (click)="doDelete(selectedUnit)">Delete</button>
         </div>
+        <hr>
+        <div class="keywords">
         <p>Keywords:</p>
         <ul *ngFor="let uk of uks">
             <li *ngIf="uk.UnitId == selectedUnit.Id">
                 {{keywords[uk.KeywordId-1].Text}}
             </li>
         </ul>
+    </div>
+
     </div>
     <!--
     <h3>Keywords</h3>
