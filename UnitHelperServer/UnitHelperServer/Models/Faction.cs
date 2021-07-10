@@ -26,6 +26,7 @@ namespace UnitHelperServer.Models
         [StringLength(8)]
         public string Metagroup { get; set; }
         public bool Approved { get; set; }
+
         [JsonIgnore]
         public virtual List<Keyword> Keywords { get; set; }
         [JsonIgnore]
