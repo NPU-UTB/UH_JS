@@ -1,6 +1,8 @@
 body {
     background-image: url(https://i1.wp.com/wallur.com/wp-content/uploads/2016/12/warhammer-3-background-9.jpg?w=1920) ;
     background-size: cover;
-    min-height: 100vh;
+    min-height: 800px;
     padding: 0;
+    
+    
 }
